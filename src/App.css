@@ -9,6 +9,8 @@
   font-style: normal;
 }
 
+/* adding the hacked games font to the prohject externally  */
+
 /* Apply it globally */
 body {
   font-family: 'MyFont', fantasy, cursive, serif;
