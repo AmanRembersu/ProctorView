@@ -1,9 +1,14 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
+import gsap from "gsap"
 
 const Nav = () => {
   const [isDark, setIsDark] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-  const [searchQuery, setSearchQuery] = useState("")
+
+  const logoRef = useRef(null)
+  const linksRef = useRef(null)
+  const buttonsRef = useRef(null)
+  const mobileMenuRef = useRef(null)
 
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme")
@@ -16,7 +21,35 @@ const Nav = () => {
       document.documentElement.classList.remove("dark")
       setIsDark(false)
     }
+
+    gsap.fromTo(
+      logoRef.current,
+      { opacity: 0, x: -20 },
+      { opacity: 1, x: 0, duration: 0.8, ease: "power2.out" }
+    )
+
+    gsap.fromTo(
+      linksRef.current,
+      { opacity: 0, y: -20 },
+      { opacity: 1, y: 0, duration: 0.8, delay: 0.2, ease: "power2.out" }
+    )
+
+    gsap.fromTo(
+      buttonsRef.current,
+      { opacity: 0, y: -20 },
+      { opacity: 1, y: 0, duration: 0.8, delay: 0.4, ease: "power2.out" }
+    )
   }, [])
+
+  useEffect(() => {
+    if (menuOpen) {
+      gsap.fromTo(
+        mobileMenuRef.current,
+        { opacity: 0, y: -10 },
+        { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }
+      )
+    }
+  }, [menuOpen])
 
   const toggleTheme = () => {
     const html = document.documentElement
@@ -33,41 +66,25 @@ const Nav = () => {
     }
   }
 
-  const handleSearch = (e) => {
-    e.preventDefault()
-    alert(`Searching for: ${searchQuery}`)
-  }
-
   return (
-    <header className="bg-white dark:bg-zinc-900 text-black dark:text-white transition-colors duration-300 shadow-md">
+    <header className="relative z-50 bg-white dark:bg-zinc-900 text-black dark:text-white transition-colors duration-300 shadow-md">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
-        <div className="text-2xl font-bold">MySite</div>
+        <div ref={logoRef} className="text-2xl font-bold">MySite</div>
 
         {/* Main navigation */}
-        <nav className="hidden md:flex space-x-6">
+        <nav ref={linksRef} className="hidden md:flex space-x-6">
           <a href="#" className="hover:text-blue-500 transition-colors">Home</a>
           <a href="#" className="hover:text-blue-500 transition-colors">About</a>
           <a href="#" className="hover:text-blue-500 transition-colors">Contact</a>
         </nav>
 
-        {/* Right side: search, download, theme, menu */}
-        <div className="flex items-center space-x-4">
-          {/* Search */}
-          <form onSubmit={handleSearch} className="hidden md:block">
-            <input
-              type="text"
-              placeholder="Search..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-sm text-black dark:text-white focus:outline-none"
-            />
-          </form>
-
+        {/* Right side: theme, menu, download */}
+        <div ref={buttonsRef} className="flex items-center space-x-4">
           {/* Download Button */}
           <a
             href="#"
-            className="hidden md:inline-block bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm transition-colors"
+            className="hidden md:inline-block bg-zinc-500 hover:bg-zinc-600 text-white px-4 py-2 rounded-xl text-sm transition-colors"
           >
             Download
           </a>
@@ -92,23 +109,14 @@ const Nav = () => {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden flex flex-col items-center bg-white dark:bg-zinc-900 py-4 space-y-4 transition-all duration-300">
+        <div
+          ref={mobileMenuRef}
+          className="md:hidden flex flex-col items-center bg-white dark:bg-zinc-900 py-4 space-y-4 transition-all duration-300"
+        >
           <a href="#" className="hover:text-blue-500 transition-colors">Home</a>
           <a href="#" className="hover:text-blue-500 transition-colors">About</a>
           <a href="#" className="hover:text-blue-500 transition-colors">Contact</a>
 
-          {/* Mobile search bar */}
-          <form onSubmit={handleSearch} className="w-full px-6">
-            <input
-              type="text"
-              placeholder="Search..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full px-3 py-2 rounded-md bg-zinc-100 dark:bg-zinc-800 text-black dark:text-white"
-            />
-          </form>
-
-          {/* Mobile download button */}
           <a
             href="#"
             className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm transition-colors"
