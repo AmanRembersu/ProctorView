@@ -47,7 +47,7 @@ export default function CoverPage() {
       {/* Footer */}
       <footer className="py-6 border-t border-gray-700 text-gray-500 text-sm">
         <div className="container mx-auto">
-          Copyright Proctorview, Developed by {" "}
+          Copyright &copy; Proctorview, Developed by {" "}
           <a href="https://github.com/AmanRembersu" className="underline hover:text-gray-500">
             Aman
           </a>
