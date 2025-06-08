@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'MyFont';
+  src: url('./HACKED.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Apply it globally */
+body {
+  font-family: 'MyFont', fantasy, cursive, serif;
+  letter-spacing: 1.5px;
+}
