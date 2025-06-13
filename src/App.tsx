@@ -1,28 +1,32 @@
 
 import "./App.css"
+import { BrowserRouter as Router,Route,Routes,Link} from "react-router-dom";
+import About from "./components/About"
 
 export default function CoverPage() {
   return (
     <div className="flex flex-col min-h-screen text-center bg-zinc-950 text-white">
       {/* Header */}
       <header className="py-6 border-b border-gray-700">
+        <Router>
         <nav className="container mx-auto flex justify-center space-x-8 text-lg font-semibold">
-          <a href="/" className="hover:text-gray-500">
+          <Link to="/" className="hover:text-gray-500">
             Home
-          </a>
-          <a href="" className="hover:text-gray-500">
+          </Link>
+          <Link to="/About" className="hover:text-gray-500">
             About
-          </a>
+          </Link>
           <a href="#" className="hover:text-gray-500">
             Documentation
           </a>
         </nav>
+        </Router>
       </header>
 
       {/* Main Hero */}
       <main className="flex-grow flex flex-col justify-center items-center px-4 max-w-3xl mx-auto">
         <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-          ProctorView:
+          ProctorView
         </h1>
         <p className="text-gray-400 text-xl mb-10">
             AI-powered secure online examination system for modern institutions.
@@ -52,7 +56,7 @@ export default function CoverPage() {
             Aman
           </a>
           , by{" "}
-          <a href="https://x.com/Aman_rembersu/status/" className="underline hover:text-gray-500">
+          <a href="https://x.com/Aman_rembersu/" className="underline hover:text-gray-500">
             @aman
           </a>
           .
