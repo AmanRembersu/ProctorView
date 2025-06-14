@@ -37,18 +37,19 @@ export default function CoverPage() {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-6 justify-center w-full max-w-md px-4 mb-12">
                   <a
-                    href="#"
+                    href="https://drive.google.com/uc?export=download&id=1T4x7IvvP51hKu9bLTMxsx4sylTZ1qLWd"
                     className="flex-1 bg-gray-700 hover:bg-gray-800 px-6 py-3 rounded-xl text-sm font-semibold shadow-lg transition transform hover:scale-105"
                   >
-                    Download for Windows (.exe)
+                    Download for Windows (.exe) 
                   </a>
-                  <a
-                    href="#"
+                  <a 
+                    href="https://drive.google.com/uc?export=download&id=1_YOWXva2SHEhe0hbl_1pkmjHJ3nIBeZk"
                     className="flex-1 bg-gray-700 hover:bg-gray-800 px-6 py-3 rounded-xl text-sm font-semibold shadow-lg transition transform hover:scale-105"
                   >
                     Download for Linux (.deb)
                   </a>
                 </div>
+
               </main>
             }
           />
@@ -56,7 +57,8 @@ export default function CoverPage() {
           <Route path="/documentation" element={<Documentation />} />
         </Routes>
 
-        {/* Footer */}
+
+     
         <footer className="py-6 border-t border-gray-700 text-gray-500 text-sm">
           <div className="container mx-auto">
             Copyright &copy; ProctorView, Developed by{" "}
