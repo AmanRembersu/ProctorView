@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="ProctorBView Full Documentation for Secure Online Exam Browser" />
+  <title>ProctorBView Documentation</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+<body class="bg-white text-black font-sans">
+  <header class="bg-black border-b border-gray-700 p-6">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-white">ProctorBView Documentation</h1>
+      <a href="/" class="text-white hover:underline">← Back to Home</a>
+    </div>
+  </header>
+
+  <main class="container mx-auto py-16 px-4 md:px-0">
+    <section id="introduction" class="mb-16">
+      <h2 class="text-3xl font-bold mb-4">Overview</h2>
+      <p class="text-gray-700">
+        <strong>ProctorBView</strong> is a secure, Electron-based desktop browser built for high-stakes online assessments. It ensures academic integrity by disabling shortcuts, locking the test environment, and preventing screen capture or browser tampering. Ideal for educational institutions and corporate certification bodies, ProctorBView integrates with any web-based assessment system via configuration.
+      </p>
+    </section>
+
+    <section id="core-features" class="mb-16">
+      <h2 class="text-2xl font-semibold mb-4">Key Features</h2>
+      <ul class="list-disc list-inside text-gray-700">
+        <li>Full-screen locked kiosk mode to prevent switching apps</li>
+        <li>Disabled right-click, shortcuts (Ctrl, F12, F5, PrintScreen)</li>
+        <li>Predefined secure URL loading from config</li>
+        <li>Electron-powered custom secure browser interface</li>
+        <li>Custom top-bar with date display and controlled exit</li>
+        <li>Iframe-based secure loading of any exam system</li>
+        <li>Daily-updated browser build for enhanced security</li>
+      </ul>
+    </section>
+
+    <section id="technical-stack" class="mb-16">
+      <h2 class="text-2xl font-semibold mb-4">Technology Stack</h2>
+      <ul class="list-disc list-inside text-gray-700">
+        <li><strong>Frontend:</strong> HTML, CSS (Tailwind), JavaScript</li>
+        <li><strong>Backend:</strong> Electron (Node.js)</li>
+        <li><strong>Security Layer:</strong> Preload script for input restrictions</li>
+        <li><strong>Configurable:</strong> Exam URL stored in JSON</li>
+      </ul>
+    </section>
+
+    <section id="structure" class="mb-16">
+      <h2 class="text-2xl font-semibold mb-4">Application Structure</h2>
+      <pre class="bg-gray-100 p-4 rounded text-sm text-black overflow-auto">
+/ProctorBView
+├── index.html         # Secure exam interface layout (iframe + UI)
+├── main.js            # Electron app launcher with secure config
+├── preload.js         # Input restriction (disables keys/menus)
+├── config.json        # Target exam form or platform URL
+└── package.json       # App metadata and dependencies
+      </pre>
+    </section>
+
+    <section id="config" class="mb-16">
+      <h2 class="text-2xl font-semibold mb-4">Configuration</h2>
+      <p class="text-gray-700 mb-2">
+        The exam URL is stored in <code>config.json</code>. Change it to direct users to your own exam portal or form.
+      </p>
+      <pre class="bg-gray-100 p-4 rounded text-sm text-black overflow-auto">
+{
+  "url": "https://your-secure-exam-link.com"
+}
+      </pre>
+    </section>
+
+    <section id="usage" class="mb-16">
+      <h2 class="text-2xl font-semibold mb-4">How It Works</h2>
+      <ol class="list-decimal list-inside text-gray-700 space-y-2">
+        <li>Launches in fullscreen kiosk mode (no window controls)</li>
+        <li>Loads secure exam interface via iframe</li>
+        <li>Blocks all common shortcuts and developer tools</li>
+        <li>Shows date and a secure exit button</li>
+        <li>Prevents screen capture and context menu usage</li>
+      </ol>
+    </section>
+
+    <section id="installation" class="mb-16">
+      <h2 class="text-2xl font-semibold mb-4">Installation</h2>
+      <pre class="bg-gray-100 p-4 rounded text-sm text-black overflow-auto">
+# Clone the repo
+git clone https://github.com/your-org/proctorbview.git
+cd proctorbview
+
+# Install dependencies
+npm install
+
+# Start app (dev mode)
+npm start
+
+# Build app (for production)
+npm run build
+      </pre>
+    </section>
+
+    <section id="security" class="mb-16">
+      <h2 class="text-2xl font-semibold mb-4">Security Measures</h2>
+      <ul class="list-disc list-inside text-gray-700">
+        <li>Right-click disabled via <code>preload.js</code></li>
+        <li>All keyboard shortcuts like Ctrl, F12, PrintScreen blocked</li>
+        <li>No access to browser dev tools</li>
+        <li>Auto-updated versions with enhanced protection policies</li>
+      </ul>
+    </section>
+
+    <section id="customization" class="mb-16">
+      <h2 class="text-2xl font-semibold mb-4">Customization & Branding</h2>
+      <p class="text-gray-700">
+        We offer white-labeled versions of ProctorBView with your logo, custom URL, and secure exam policy integrations. Contact us to tailor the platform to your institution’s needs.
+      </p>
+    </section>
+
+    <section id="support" class="mb-16">
+      <h2 class="text-2xl font-semibold mb-4">Support & Updates</h2>
+      <p class="text-gray-700">
+        Every ProctorBView license comes with full technical support, documentation, and regular updates. Critical security patches are pushed automatically to ensure uninterrupted exam safety.
+      </p>
+    </section>
+
+    <section id="contact" class="mb-16">
+      <h2 class="text-2xl font-semibold mb-4">Contact Us</h2>
+      <p class="text-gray-700">
+        For demos, licensing, or enterprise deployments, contact our team at <a href="mailto:support@proctorbview.com" class="text-blue-600 underline">support@proctorbview.com</a>.
+      </p>
+    </section>
+  </main>
+
+  <footer class="bg-black border-t border-gray-700 py-6 text-center text-gray-400">
+    &copy; 2025 ProctorBView. Secure Exam Browser Solution.
+  </footer>
+</body>
+</html>
