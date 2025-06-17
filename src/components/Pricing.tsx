@@ -42,7 +42,7 @@ export default function Pricing() {
     return (
       <div className="text-center text-white py-20">
         <h2 className="text-3xl font-bold mb-4">Thank you!</h2>
-        <p>We will contact you soon with your custom secure browser.</p>
+        <p>We will contact you soon and also you will receive an email from our team for payment and more details to proceed with your plan.</p>
       </div>
     );
   }
