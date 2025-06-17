@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+type Plan = "Basic" | "Pro" | "Enterprise";
 type FormData = {
   name: string;
   email: string;
@@ -8,7 +9,7 @@ type FormData = {
 };
 
 export default function Pricing() {
-  const [selectedPlan, setSelectedPlan] = useState<"Basic" | "Premium" | "Enterprise" | "">("");
+  const [selectedPlan, setSelectedPlan] = useState<Plan | "">("");
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -48,27 +49,53 @@ export default function Pricing() {
 
   return (
     <div className="min-h-screen bg-zinc-950 text-white flex flex-col items-center px-4 py-10">
-      <h1 className="text-4xl font-bold mb-8">Choose a Plan</h1>
+      <h1 className="text-4xl font-bold mb-8">ProctorView Plans</h1>
+      <p className="text-gray-400 mb-8 text-center max-w-2xl">
+        We offer custom secure browsers tailored to your organization's needs. Choose a plan that best fits your use case.
+      </p>
 
-      <div className="grid md:grid-cols-3 gap-6 mb-12 w-full max-w-5xl">
-        {(["Basic", "Premium", "Enterprise"] as const).map((plan) => (
-          <div
-            key={plan}
-            className={`p-6 rounded-xl cursor-pointer border transition ${
-              selectedPlan === plan
-                ? "border-green-500 bg-zinc-900"
-                : "border-white/10 bg-zinc-800"
-            }`}
-            onClick={() => setSelectedPlan(plan)}
-          >
-            <h2 className="text-2xl font-semibold mb-2">{plan}</h2>
-            <p className="text-gray-400">
-              {plan === "Basic" && "Basic browser for one site"}
-              {plan === "Premium" && "Includes styling and basic support"}
-              {plan === "Enterprise" && "Multiple site support & advanced config"}
-            </p>
-          </div>
-        ))}
+      <div className="grid md:grid-cols-3 gap-6 mb-12 w-full max-w-6xl">
+        {/* Basic Plan */}
+        <PlanCard
+          title="Basic"
+          price="$49"
+          selected={selectedPlan === "Basic"}
+          onClick={() => setSelectedPlan("Basic")}
+          features={[
+            "Single website lockdown",
+            "Fullscreen kiosk mode",
+            "No branding customization",
+            "Basic email delivery",
+          ]}
+        />
+
+        {/* Pro Plan */}
+        <PlanCard
+          title="Pro"
+          price="$99"
+          selected={selectedPlan === "Pro"}
+          onClick={() => setSelectedPlan("Pro")}
+          features={[
+            "Branding with your logo",
+            "Preload custom instructions",
+            "Email + 30-day support",
+            "1 free update included",
+          ]}
+        />
+
+        {/* Enterprise Plan */}
+        <PlanCard
+          title="Enterprise"
+          price="Starts at $199"
+          selected={selectedPlan === "Enterprise"}
+          onClick={() => setSelectedPlan("Enterprise")}
+          features={[
+            "Multi-domain lockdown",
+            "Admin panel & logging",
+            "Priority SLA & support",
+            "Advanced customization",
+          ]}
+        />
       </div>
 
       {selectedPlan && (
@@ -76,7 +103,9 @@ export default function Pricing() {
           onSubmit={handleSubmit}
           className="w-full max-w-lg bg-zinc-900 p-6 rounded-xl space-y-4"
         >
-          <h3 className="text-xl font-semibold">Tell us what you need</h3>
+          <h3 className="text-xl font-semibold mb-2">
+            Tell us about your use case for the {selectedPlan} plan
+          </h3>
 
           <input
             required
@@ -95,7 +124,7 @@ export default function Pricing() {
           <input
             required
             type="url"
-            placeholder="Site to render in browser"
+            placeholder="Website to render"
             className="w-full p-2 rounded bg-zinc-800 text-white"
             onChange={(e) => handleChange("website", e.target.value)}
           />
@@ -114,6 +143,45 @@ export default function Pricing() {
           </button>
         </form>
       )}
+    </div>
+  );
+}
+
+// Pricing Card Component
+function PlanCard({
+  title,
+  price,
+  features,
+  selected,
+  onClick,
+}: {
+  title: string;
+  price: string;
+  features: string[];
+  selected: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <div
+      onClick={onClick}
+      className={`p-6 rounded-xl border cursor-pointer hover:shadow-lg transition-all ${
+        selected ? "border-green-500 bg-zinc-900" : "border-white/10 bg-zinc-800"
+      }`}
+    >
+      <h2 className="text-2xl font-semibold mb-1">{title}</h2>
+      <p className="text-3xl font-bold text-green-400 mb-4">{price}</p>
+      <ul className="text-gray-400 space-y-1 mb-4">
+        {features.map((f, i) => (
+          <li key={i}>✓ {f}</li>
+        ))}
+      </ul>
+      <div
+        className={`text-sm font-medium px-3 py-1 inline-block rounded-full ${
+          selected ? "bg-green-600" : "bg-zinc-700"
+        }`}
+      >
+        {selected ? "Selected" : "Choose Plan"}
+      </div>
     </div>
   );
 }
