@@ -1,4 +1,3 @@
-// a functional component in React that renders the about page with html componnt and the ui i used is tailwind css
 function About() {
   return (
     <div className="bg-black text-gray-300 font-sans leading-relaxed"> // the main div with background color and text color
