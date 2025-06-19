@@ -1,6 +1,7 @@
+// a functional component in React that renders the about page with html componnt and the ui i used is tailwind css
 function About() {
   return (
-    <div className="bg-black text-gray-300 font-sans leading-relaxed">
+    <div className="bg-black text-gray-300 font-sans leading-relaxed"> // the main div with background color and text color
       <main className="max-w-5xl mx-auto px-6 py-12 space-y-20 text-left">
 
         <section id="overview" className="space-y-6">
@@ -8,10 +9,10 @@ function About() {
             What is ProctorView?
           </h2>
           <p className="text-lg max-w-prose">
-            ProctorView is a modern online exam proctoring platform designed for institutions and educators who want to conduct remote tests seamlessly. Our user-friendly interface and screen monitoring tools make it easy to maintain test discipline in a virtual environment.
+            ProctorView is a modern online exam proctoring platform designed for institutions and educators who want to conduct remote tests seamlessly. Our user-friendly interface and screen monitoring tools make it easy to maintain test discipline in a virtual environment. Causing the students to appear the exams or any tests without any cheating or any other malpractices.
           </p>
           <p className="text-lg max-w-prose">
-            Built for simplicity and scale, ProctorView helps ensure fair testing conditions with minimal setup — no downloads, no hassle.
+            Built for simplicity and scale, ProctorView helps ensure fair testing conditions with minimal setup — Easy setup, no hassle.
           </p>
         </section>
 
@@ -20,10 +21,10 @@ function About() {
             What Makes Us Different
           </h2>
           <ul className="list-disc list-inside space-y-3 text-lg max-w-prose">
-            <li><strong>Screen Monitoring:</strong> Tracks browser tabs and activity to flag unauthorized actions.</li>
-            <li><strong>Effortless Setup:</strong> No plugins or installations — exams start directly in the browser.</li>
+            <li><strong>Screen Monitoring:</strong> Tracks browser tabs and activity to flag unauthorized actions. Must be developed with within site</li>
+            <li><strong>Effortless Setup:</strong> No plugins or Complex setups — exams start directly in the browser after installed .</li>
             <li><strong>Session Recording:</strong> Test sessions are recorded for post-exam review and transparency.</li>
-            <li><strong>Real-Time Alerts:</strong> Supervisors receive notifications if anything unusual happens during the test.</li>
+            <li><strong>Prevents Malpractices</strong>No other applications and tabs cant open , keyboard shortcuts dont work.</li>
           </ul>
         </section>
 
